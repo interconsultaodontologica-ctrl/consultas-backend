@@ -77,7 +77,11 @@ Jamás inventes información. Responde en español."""
     data = res.json()
     if "choices" in data:
         return data["choices"][0]["message"]["content"]
-    return "Error al sintetizar respuestas."
+    # Si falla síntesis, devolver la primera respuesta válida directamente
+    for doc, resp in respuestas.items():
+        if resp != "NO_ENCONTRADO":
+            return f"**{doc}:**\n{resp}"
+    return "No encontré información en los documentos disponibles."
 
 @app.route("/chat", methods=["POST"])
 def chat():
