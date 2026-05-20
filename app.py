@@ -17,7 +17,7 @@ Si la información no está en el documento, responde exactamente: "NO_ENCONTRAD
 Jamás inventes información. Responde en español, de forma clara y estructurada.
 
 DOCUMENTO:
-{doc_contenido[:20000]}"""
+{doc_contenido[:28000]}"""
 
     messages = [{"role": "system", "content": system}]
     for m in historial[:-1]:
