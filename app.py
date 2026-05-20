@@ -44,7 +44,7 @@ DOCUMENTO:
     return "NO_ENCONTRADO"
 
 def sintetizar_respuestas(pregunta, respuestas):
-    contenido = "\n\n".join([f"Documento '{doc}': {resp}" 
+    contenido = "\n\n".join([f"Documento '{doc}': {resp[:3000]}" 
                               for doc, resp in respuestas.items() 
                               if resp != "NO_ENCONTRADO"])
     
