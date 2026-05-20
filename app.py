@@ -40,6 +40,7 @@ def consultar_groq(pregunta, historial, doc_nombre, doc_contenido):
 Responde ÚNICAMENTE basándote en el siguiente fragmento del documento: {doc_nombre}.
 Si la información no está en el fragmento, responde exactamente: "NO_ENCONTRADO".
 Jamás inventes información. Responde en español, de forma clara y estructurada.
+IMPORTANTE: Al interpretar criterios de edad, razona correctamente. Si el criterio dice "edad máxima 60 años" y el paciente tiene 20 años, el paciente SÍ cumple el criterio. Si dice "edad mínima 5 años" y el paciente tiene 3 años, NO cumple.
 
 FRAGMENTO DEL DOCUMENTO:
 {fragmento}"""
