@@ -134,15 +134,11 @@ def chat():
     if not documentos:
         return jsonify({"respuesta": "No hay documentos disponibles."}), 200
 
+ import time
     respuestas = {}
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futuros = {
-            executor.submit(consultar_groq, pregunta, historial, doc["name"], doc["content"]): doc["name"]
-            for doc in documentos
-        }
-        for futuro in concurrent.futures.as_completed(futuros):
-            nombre = futuros[futuro]
-            respuestas[nombre] = futuro.result()
+    for doc in documentos:
+        respuestas[doc["name"]] = consultar_groq(pregunta, historial, doc["name"], doc["content"])
+        time.sleep(2)
 
     respuesta_final = sintetizar_respuestas(pregunta, respuestas)
     return jsonify({"respuesta": respuesta_final}), 200
