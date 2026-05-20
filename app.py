@@ -40,7 +40,10 @@ DOCUMENTO:
     })
     data = res.json()
     if "choices" in data:
-        return data["choices"][0]["message"]["content"]
+        resultado = data["choices"][0]["message"]["content"]
+        print(f"DOC: {doc_nombre} | RESPUESTA: {resultado[:200]}")
+        return resultado
+    print(f"DOC: {doc_nombre} | ERROR: {data}")
     return "NO_ENCONTRADO"
 
 def sintetizar_respuestas(pregunta, respuestas):
